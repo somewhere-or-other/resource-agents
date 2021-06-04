@@ -172,10 +172,10 @@ crypt_validate_all() {
 		ocf_exit_reason "Please install cryptsetup(8)"
 		return $OCF_ERR_INSTALLED
 	fi
-# 	if ocf_is_true $use_clevis && ! have_binary clevis ; then
-#         ocf_exit_reason "Please install clevis tools"
-#         return $OCF_ERR_INSTALLED
-#     fi
+	if ocf_is_true "$use_clevis" && ! have_binary clevis ; then
+        ocf_exit_reason "Please install clevis tools"
+        return $OCF_ERR_INSTALLED
+    fi
 	if [ -z "$encrypted_dev" ]; then
 		ocf_exit_reason "Undefined OCF_RESKEY_encrypted_dev"
 		return $OCF_ERR_CONFIGURED

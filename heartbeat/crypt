@@ -267,13 +267,14 @@ crypt_stop_one() {
 crypt_start() {
 	local rc
 
-# 	if ocf_is_true use_clevis; then
+	if ocf_is_true use_clevis; then
 		clevis luks unlock -d $encrypted_dev -n $crypt_dev
 		rc=$?
-# 	else
+	else
+        ocf_exit_reason "NOT USING CLEVIS"
 # 		cryptsetup open $encrypted_dev $crypt_dev --type $crypt_type $disable_locks --key-file=$key_file
 # # 		rc=$?
-# 	fi
+	fi
 	if [ $rc -eq 0 ];then
 		crypt_monitor
 		rc=$?

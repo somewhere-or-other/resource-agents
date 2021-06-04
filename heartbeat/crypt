@@ -267,7 +267,7 @@ crypt_stop_one() {
 crypt_start() {
 	local rc
 
-	if ocf_is_true use_clevis; then
+	if ocf_is_true $use_clevis; then
 		clevis luks unlock -d $encrypted_dev -n $crypt_dev
 		rc=$?
 	else

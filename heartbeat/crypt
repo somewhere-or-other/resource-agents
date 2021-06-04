@@ -271,9 +271,8 @@ crypt_start() {
 		clevis luks unlock -d $encrypted_dev -n $crypt_dev
 		rc=$?
 	else
-        ocf_exit_reason "NOT USING CLEVIS"
-# 		cryptsetup open $encrypted_dev $crypt_dev --type $crypt_type $disable_locks --key-file=$key_file
-# # 		rc=$?
+ 		cryptsetup open $encrypted_dev $crypt_dev --type $crypt_type $disable_locks --key-file=$key_file
+ 		rc=$?
 	fi
 	if [ $rc -eq 0 ];then
 		crypt_monitor

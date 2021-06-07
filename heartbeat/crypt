@@ -229,6 +229,7 @@ crypt_validate_all() {
 
 
 detect_clevis() {
+    echo "DEBUGGING: at beginning of detect_clevis:"; echo "DEBUGGING:  use_clevis: $use_clevis"; echo "DEBUGGING:  encrypted_dev: $encrypted_dev"
 	if ! have_binary clevis; then
 		use_clevis="false" #We can't use clevis, if we don't have it installed
 	elif ! ocf_is_true "$use_clevis"; then #if not already specified by user to use clevis
@@ -237,6 +238,7 @@ detect_clevis() {
 			use_clevis="true" #if grep finds output that matches, we have clevis, therefore use it
 		fi
 	fi
+	echo "DEBUGGING: at end of detect_clevis:"; echo "DEBUGGING:  use_clevis: $use_clevis"; echo "DEBUGGING:  encrypted_dev: $encrypted_dev"
 }
 
 

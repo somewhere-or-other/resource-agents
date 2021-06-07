@@ -229,7 +229,7 @@ crypt_validate_all() {
 
 
 detect_clevis() {
-	if [ ! have_binary clevis ]; then
+	if ! have_binary clevis; then
 		use_clevis="false" #We can't use clevis, if we don't have it installed
 	elif [ ! ocf_is_true "$use_clevis" ]; then #if not already specified by user to use clevis
 		#Try to detect whether clevis is available

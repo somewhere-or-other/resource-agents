@@ -233,7 +233,7 @@ detect_clevis() {
 		use_clevis="false" #We can't use clevis, if we don't have it installed
 	elif [ ! ocf_is_true "$use_clevis" ] #if not already specified by user to use clevis
 		#Try to detect whether clevis is available
-		if `clevis luks list -d $encrypted_dev | grep -q '^[[:digit:]]\+:'`; then
+		if clevis luks list -d $encrypted_dev | grep -q '^[[:digit:]]\+:'; then
 			use_clevis="true" #if grep finds output that matches, we have clevis, therefore use it
 		fi
 	fi
